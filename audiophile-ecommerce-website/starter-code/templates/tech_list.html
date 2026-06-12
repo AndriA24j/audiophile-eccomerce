@@ -1,0 +1,71 @@
+{% extends 'base.html' %} {% block title %}Products{% endblock %} {% block
+styles %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/tech_list.css') }}"
+/>
+{% endblock %} {% block content %}
+<section class="s1">
+  <div class="head">
+    <h2>Pick your favorite product</h2>
+  </div>
+  <div class="tech_wrap">
+    <div class="category">
+      <div class="category-header">
+        <h2>HEADPHONES</h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="items">
+        <a
+          href="{{ url_for('product', product_id='xx99-mark-2') }}"
+          class="product-item"
+          >XX99 Mark II</a
+        >
+        <a
+          href="{{ url_for('product', product_id='xx59') }}"
+          class="product-item"
+          >XX59</a
+        >
+        <a
+          href="{{ url_for('product', product_id='xx99-mark-1') }}"
+          class="product-item"
+          >XX99 Mark I</a
+        >
+      </div>
+    </div>
+
+    <div class="category">
+      <div class="category-header">
+        <h2>EARPHONES</h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="items">
+        <a
+          href="{{ url_for('product', product_id='yx1-wireless') }}"
+          class="product-item"
+          >YX1 Wireless</a
+        >
+      </div>
+    </div>
+
+    <div class="category">
+      <div class="category-header">
+        <h2>SPEAKERS</h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="items">
+        <a
+          href="{{ url_for('product', product_id='zx9-speaker') }}"
+          class="product-item"
+          >ZX9 Speaker</a
+        >
+        <a
+          href="{{ url_for('product', product_id='zx7-speaker') }}"
+          class="product-item"
+          >ZX7 Speaker</a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock%}

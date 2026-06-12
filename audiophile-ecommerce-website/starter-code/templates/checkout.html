@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block title %}Checkout{% endblock %} {% block
+styles %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/checkout.css') }}"
+/>
+{% endblock %} {% block content %}
+
+<div class="checkout-container">
+  {% if success %}
+  <h1>Payment Successful ✅</h1>
+  <p>Your order has been completed.</p>
+  <p><b>Total paid:</b> ${{ total }}</p>
+  <p><b>Remaining balance:</b> ${{ balance }}</p>
+
+  <a href="{{ url_for('home') }}" class="btn">Go Home</a>
+
+  {% else %}
+  <h1>Checkout Failed ❌</h1>
+  <p>{{ message }}</p>
+
+  <a href="{{ url_for('cart') }}" class="btn">Back to Cart</a>
+  {% endif %}
+</div>
+
+{% endblock %}

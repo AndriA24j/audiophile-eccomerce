@@ -1,0 +1,194 @@
+{% extends 'base.html' %} {% block title %}Products{% endblock %} {% block
+styles %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/products.css') }}"
+/>
+{% endblock %} {% block content %}
+<section class="s1">
+  <div class="back">
+    <a href="/techList"><span>Go Back</span></a>
+  </div>
+  <div class="wrap">
+    <div class="left">
+      <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="{{ url_for('static', filename=product.images[0]) }}"
+              class="d-block w-100"
+              alt=""
+            />
+          </div>
+
+          <div class="carousel-item">
+            <img
+              src="{{ url_for('static', filename=product.gallery[0]) }}"
+              class="d-block w-100"
+              alt=""
+            />
+          </div>
+
+          <div class="carousel-item">
+            <img
+              src="{{ url_for('static', filename=product.gallery[1]) }}"
+              class="d-block w-100"
+              alt=""
+            />
+          </div>
+        </div>
+
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+    <div class="right">
+      <h1>{{product.name}}</h1>
+      <p>{{product.description}}</p>
+      <span>$ {{product.price}}</span>
+      <div class="product-actions">
+        <div class="quantity">
+          <button type="button" onclick="decreaseQty()">-</button>
+
+          <input type="text" id="qty" value="1" readonly />
+
+          <button type="button" onclick="increaseQty()">+</button>
+        </div>
+
+        <button type="button" onclick="addToCart()">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+  <div class="information">
+    <div class="features">
+      <h2></h2>
+      <p>{{product.features}}</p>
+    </div>
+    <div class="box">
+      <h2>In the box</h2>
+      <div class="thin"><span>1x</span> {{product.box[0]}}</div>
+      <div class="thin"><span>2x </span> {{product.box[1]}}</div>
+      <div class="thin"><span>1x</span>{{product.box[2]}}</div>
+      <div class="thin"><span>1x</span> {{product.box[3]}}</div>
+    </div>
+  </div>
+  <div class="gallery">
+    <div class="heigh">
+      <img src="{{ url_for('static', filename=product.gallery[0]) }}" /><img
+        src="{{ url_for('static', filename=product.gallery[1]) }}"
+      />
+    </div>
+    <div class="wid">
+      <img src="{{ url_for('static', filename=product.gallery[2]) }}" />
+    </div>
+  </div>
+  <div class="liked">
+    <div class="cards">
+      <img
+        src="{{ url_for('static', filename='assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg') }}"
+        alt=""
+      />
+      <h3>XX99 MARK II</h3>
+      <button>
+        <a
+          href="{{ url_for('product', product_id='xx99-mark-2') }}"
+          class="product-item"
+          >See Product</a
+        >
+      </button>
+    </div>
+    <div class="cards">
+      <img
+        src="{{ url_for('static', filename='assets/product-xx59-headphones/desktop/image-category-page-preview.jpg') }}"
+        alt=""
+      />
+      <h3>XX59</h3>
+      <button>
+        <a
+          href="{{ url_for('product', product_id='xx59') }}"
+          class="product-item"
+          >See Product
+        </a>
+      </button>
+    </div>
+    <div class="cards">
+      <img
+        src="{{ url_for('static', filename='assets/product-zx7-speaker/desktop/image-category-page-preview.jpg') }}"
+        alt=""
+      />
+      <h3>ZX9 SPEAKER</h3>
+      <button>
+        <a
+          href="{{ url_for('product', product_id='zx9-speaker') }}"
+          class="product-item"
+          >See Product</a
+        >
+      </button>
+    </div>
+  </div>
+</section>
+<section class="s3">
+  <div class="card-list">
+    <div class="card">
+      <img
+        src="{{ url_for('static', filename='assets/shared/desktop/image-category-thumbnail-headphones.png') }}"
+        alt=""
+      />
+      <h2>HEADPHONES</h2>
+      <a href="{{ url_for('headphones') }}">SHOP</a>
+    </div>
+    <div class="card">
+      <img
+        src="{{ url_for('static', filename='assets/shared/desktop/image-category-thumbnail-speakers.png') }}"
+        alt=""
+      />
+      <h2>SPEAKERS</h2>
+      <a href="{{ url_for('speakers') }}">SHOP</a>
+    </div>
+    <div class="card">
+      <img
+        src="{{ url_for('static', filename='assets/shared/desktop/image-category-thumbnail-earphones.png') }}"
+        alt=""
+      />
+      <h2>EARPHONES</h2>
+      <a href="{{ url_for('earphones') }}">SHOP</a>
+    </div>
+  </div>
+</section>
+<section class="s5">
+  <div class="container">
+    <div class="text">
+      <h3>Bringing you the <span>best</span> audio gear</h3>
+      <p>
+        Located at the heart of New York City, Audiophile is the premier store
+        for high end headphones, earphones, speakers, and audio accessories. We
+        have a large showroom and luxury demonstration rooms available for you
+        to browse and experience a wide range of our products. Stop by our store
+        to meet some of the fantastic people who make Audiophile the best place
+        to buy your portable audio equipment.
+      </p>
+    </div>
+    <div class="pic">
+      <img
+        src="{{ url_for('static', filename='assets/shared/desktop/image-best-gear.jpg') }}"
+        alt="gear"
+      />
+    </div>
+  </div>
+</section>
+{% endblock %}
